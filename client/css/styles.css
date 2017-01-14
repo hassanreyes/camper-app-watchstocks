@@ -1,0 +1,91 @@
+
+@import url("react-datepicker.min.css");
+@import url('https://fonts.googleapis.com/css?family=Teko');
+
+body {
+    color: #FFF;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h3.title {
+    text-align: center;
+    font-family: 'Teko', sans-serif;
+}
+
+.inline-flex-stocks {
+    display: inline-flex;
+    padding: 5px;
+    border: 1px dashed #303030;
+}
+
+.inline-stock {
+    display: inline-block;
+    width: 300px;
+    height: 130px;
+    border-left: solid 4px;
+    margin-right: 10px;
+    background-color: #707073;
+}
+
+.data-input {
+    height: auto;
+    padding: 2px 5px;
+    line-height: normal;
+}
+
+.btn-timespan {
+    font-family: 'Teko', sans-serif;
+    background-color: #222222;
+    padding: 1px 3px;
+}
+
+.btn-timespan.active {
+    border-color: #4d8a8a;
+    background-color: #d67800;
+}
+
+.btn-timespan:hover {
+    border-color: #4d8a8a;
+}
+
+.chart-well {
+    min-height: 20px;
+    padding: 19px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background-color: #303030;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    float: left;
+}
+
+.tooltip-container {
+    background-color: #FFF;
+}
+
+.custom-datepicker {
+    font-family: 'Teko', sans-serif;
+    border: 0;
+    background-color: #222222;
+    padding: 1px 3px;
+    color: #FFF;
+}
+
+.custom-datepicker:hover {
+    border: 1px solid #4d8a8a;
+}
+
+/* */
+
+.form-inline {
+    float: right;
+}
+
+.form-group.custom {
+    padding-left: 5px;
+}
+
