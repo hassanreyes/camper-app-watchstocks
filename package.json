@@ -9,7 +9,7 @@
     "start": "node server.js"
     "preinstall": "npm cache clean",
     "postinstall": "webpack",
-    "build": "webpack"
+    "build": "npm -i webpack@1.14.0 && webpack"
   },
   "dependencies": {
     "async": "~0.2.8",
