@@ -19,8 +19,6 @@ function getRandomColor() {
 
 function getWindowFrom(to, zoom){
     var retVal = to.clone();
-    
-    console.log(retVal);
     switch(zoom){
         case '1M': retVal.subtract(1, 'months'); break;
         case '3M': retVal.subtract(3, 'months'); break;
@@ -28,8 +26,6 @@ function getWindowFrom(to, zoom){
         case '1Y': retVal.subtract(1, 'years'); break;
         case 'YTD': retVal.startOf('year'); break;
     }
-    console.log(retVal);
-    
     return retVal;
 }
 
@@ -82,8 +78,8 @@ class StocksComponent extends React.Component {
     fetchData() {
         // Handle when a stock is added from any client, data has the stock information
         this.state.socket.on('stock-added', (data) => {
+            
             data = _.extend(data, { color: getRandomColor() });
-            console.log(JSON.stringify(data));
             
             this.setState( 
                 { 
@@ -100,8 +96,6 @@ class StocksComponent extends React.Component {
         
         // Handle when some client (this included) removes a stock
         this.state.socket.on('stock-removed', (stock) => {
-           console.log("stock removed: " + JSON.stringify(stock));
-           
            // Remove from the local map
            if(this.state.stocks.delete(stock.symbol)){
                 this.setState( { stocks : this.state.stocks } );
@@ -110,19 +104,15 @@ class StocksComponent extends React.Component {
         
         // Handle when a new stock was not found by the given symbol (this is peer to peer response)
         this.state.socket.on('not-found', (data) => {
-            console.log("not found " + data.symbol);
             this.setState( { newStockError: `Stock ${data.symbol} not found` });
         });
         
         this.state.socket.on('hist-not-found', (data) => {
-            console.log("hist not found " + data.symbol);
             this.setState( { newStockError: `Stock ${data.symbol} historical data not found` });
         });
         
         // Handle the retrived historical data for a single symbol (this is peer to peer response)
         this.state.socket.on('historical', (data) => {
-            
-            console.log(data);
             
             var localData = this.state.data; 
             data.forEach((item) => {
@@ -143,7 +133,6 @@ class StocksComponent extends React.Component {
     }
     
     handleRemoveStock(stock){
-        console.log("removing stock: " + stock.symbol);
         // Send a remove-stock message with the symbol of the stock
         this.state.socket.emit("remove-stock", stock.symbol);
     }
@@ -160,6 +149,7 @@ class StocksComponent extends React.Component {
         });
     }
     
+    // Calculate new period from the TO date backward
     handleZoomchanged(zoom){
         
         const period = { from: getWindowFrom(this.state.period.to, zoom), to: this.state.period.to };
@@ -167,8 +157,9 @@ class StocksComponent extends React.Component {
         this.setState({ period: period });
     }
     
-    componentDidMount() {
-    }
+    /*------------------------
+    * Render functions
+    * ------------------------*/
     
     renderStock(stock){
         return ( <StockInfoComponent stock={stock} onRemove={this.handleRemoveStock} key={stock.symbol}/> );

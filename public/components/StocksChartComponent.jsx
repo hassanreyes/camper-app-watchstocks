@@ -21,7 +21,7 @@ var { discontinuousTimeScaleProvider } = scale;
 var { CrossHairCursor, CurrentCoordinate,
         MouseCoordinateX, MouseCoordinateY } = coordinates;
         
-var { HoverTooltip, MovingAverageTooltip } = tooltip;
+var { HoverTooltip } = tooltip;
 
 var { XAxis, YAxis } = axes;
 
@@ -156,6 +156,3 @@ StocksChartComponent.defaultProps = {
 };
 
 export default StocksChartComponent;
-
-//var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
-

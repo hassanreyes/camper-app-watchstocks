@@ -16,6 +16,12 @@ h3.title {
     font-family: 'Teko', sans-serif;
 }
 
+small {
+    color: #989898;
+}
+
+/* Custom app styles */
+
 .inline-flex-stocks {
     display: inline-flex;
     padding: 5px;
@@ -79,7 +85,7 @@ h3.title {
     border: 1px solid #4d8a8a;
 }
 
-/* */
+/* overriden styles */
 
 .form-inline {
     float: right;

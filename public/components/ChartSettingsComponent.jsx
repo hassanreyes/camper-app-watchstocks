@@ -31,27 +31,19 @@ class ChartSettingsComponent extends React.Component {
     }
     
     handleFromChange(from) {
-        console.log('from: ' + from);
         this.setState({ from: from });
         this.props.onChange( _.extend({}, this.state, { from: from }) );
     }
     
     handleToChange(to){
-        console.log('to: ' + to);
         this.setState({ to: to });
         this.props.onChange(  _.extend({}, this.state, { to: to }) );
     }
     
     handleTimeSpan(zoom){
-        console.log(zoom);
-        
         const from = getWindowFrom(this.state.to, zoom);
-        
         this.setState({ from: from, zoom: zoom });
-        
         this.props.onChange( _.extend({}, this.state, { from: from }) );
-        
-        //this.props.onZoomChanged(zoom);
     }
     
     render(){
@@ -78,7 +70,7 @@ class ChartSettingsComponent extends React.Component {
                 </div>
                 <div className="col col-md-6">
                     <div className="form-inline">
-                      <div className="form-group" onSubmit={(e) => { console.log('submitting...'); e.preventDefault(); }}>
+                      <div className="form-group">
                         <label htmlFor="exampleInputName2"><small>From&nbsp;</small></label>
                         <DatePicker
                             customInput={<CustomDatePickerComponent />}

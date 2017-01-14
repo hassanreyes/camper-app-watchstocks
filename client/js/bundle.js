@@ -21995,6 +21995,9 @@
 	                _this3.state.socket.emit("historical", { symbol: stock.symbol, period: period });
 	            });
 	        }
+
+	        // Calculate new period from the TO date backward
+
 	    }, {
 	        key: "handleZoomchanged",
 	        value: function handleZoomchanged(zoom) {
@@ -22003,9 +22006,11 @@
 
 	            this.setState({ period: period });
 	        }
-	    }, {
-	        key: "componentDidMount",
-	        value: function componentDidMount() {}
+
+	        /*------------------------
+	        * Render functions
+	        * ------------------------*/
+
 	    }, {
 	        key: "renderStock",
 	        value: function renderStock(stock) {
@@ -46751,8 +46756,6 @@
 	            this.setState({ from: from, zoom: zoom });
 
 	            this.props.onChange(_underscore2.default.extend({}, this.state, { from: from }));
-
-	            //this.props.onZoomChanged(zoom);
 	        }
 	    }, {
 	        key: "render",
@@ -46836,9 +46839,7 @@
 	                        { className: "form-inline" },
 	                        _react2.default.createElement(
 	                            "div",
-	                            { className: "form-group", onSubmit: function onSubmit(e) {
-	                                    console.log('submitting...');e.preventDefault();
-	                                } },
+	                            { className: "form-group" },
 	                            _react2.default.createElement(
 	                                "label",
 	                                { htmlFor: "exampleInputName2" },
