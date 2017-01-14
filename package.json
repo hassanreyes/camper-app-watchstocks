@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node server.js",
     "preinstall": "npm cache clean",
-    "postinstall": "webpack",
+    "postinstall": "npm install -g webpack@1.14.0 && webpack",
     "build": "webpack"
   },
   "dependencies": {
