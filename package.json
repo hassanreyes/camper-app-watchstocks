@@ -7,7 +7,7 @@
   "author": "Hassan Reyes <hassan.reyes@gmail.com>",
   "engines": {
     "node": "4.6.x"
-  }
+  },
   "scripts": {
     "start": "node server.js",
     "preinstall": "npm cache clean",
