@@ -23,9 +23,11 @@ small {
 /* Custom app styles */
 
 .inline-flex-stocks {
-    display: inline-flex;
+    display: block;
+    position: relative;
     padding: 5px;
-    border: 1px dashed #303030;
+    width: 73vw;
+    height: 100%;
 }
 
 .inline-stock {
@@ -35,6 +37,7 @@ small {
     border-left: solid 4px;
     margin-right: 10px;
     background-color: #707073;
+    float: left;
 }
 
 .data-input {

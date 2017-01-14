@@ -21842,8 +21842,6 @@
 
 	function getWindowFrom(to, zoom) {
 	    var retVal = to.clone();
-
-	    console.log(retVal);
 	    switch (zoom) {
 	        case '1M':
 	            retVal.subtract(1, 'months');break;
@@ -21856,8 +21854,6 @@
 	        case 'YTD':
 	            retVal.startOf('year');break;
 	    }
-	    console.log(retVal);
-
 	    return retVal;
 	}
 
@@ -21918,8 +21914,8 @@
 
 	            // Handle when a stock is added from any client, data has the stock information
 	            this.state.socket.on('stock-added', function (data) {
+
 	                data = _underscore2.default.extend(data, { color: getRandomColor() });
-	                console.log(JSON.stringify(data));
 
 	                _this2.setState({
 	                    stocks: _this2.state.stocks.set(data.symbol, data),
@@ -21932,8 +21928,6 @@
 
 	            // Handle when some client (this included) removes a stock
 	            this.state.socket.on('stock-removed', function (stock) {
-	                console.log("stock removed: " + JSON.stringify(stock));
-
 	                // Remove from the local map
 	                if (_this2.state.stocks.delete(stock.symbol)) {
 	                    _this2.setState({ stocks: _this2.state.stocks });
@@ -21942,19 +21936,15 @@
 
 	            // Handle when a new stock was not found by the given symbol (this is peer to peer response)
 	            this.state.socket.on('not-found', function (data) {
-	                console.log("not found " + data.symbol);
 	                _this2.setState({ newStockError: "Stock " + data.symbol + " not found" });
 	            });
 
 	            this.state.socket.on('hist-not-found', function (data) {
-	                console.log("hist not found " + data.symbol);
 	                _this2.setState({ newStockError: "Stock " + data.symbol + " historical data not found" });
 	            });
 
 	            // Handle the retrived historical data for a single symbol (this is peer to peer response)
 	            this.state.socket.on('historical', function (data) {
-
-	                console.log(data);
 
 	                var localData = _this2.state.data;
 	                data.forEach(function (item) {
@@ -21977,7 +21967,6 @@
 	    }, {
 	        key: "handleRemoveStock",
 	        value: function handleRemoveStock(stock) {
-	            console.log("removing stock: " + stock.symbol);
 	            // Send a remove-stock message with the symbol of the stock
 	            this.state.socket.emit("remove-stock", stock.symbol);
 	        }
@@ -46735,26 +46724,20 @@
 	    _createClass(ChartSettingsComponent, [{
 	        key: "handleFromChange",
 	        value: function handleFromChange(from) {
-	            console.log('from: ' + from);
 	            this.setState({ from: from });
 	            this.props.onChange(_underscore2.default.extend({}, this.state, { from: from }));
 	        }
 	    }, {
 	        key: "handleToChange",
 	        value: function handleToChange(to) {
-	            console.log('to: ' + to);
 	            this.setState({ to: to });
 	            this.props.onChange(_underscore2.default.extend({}, this.state, { to: to }));
 	        }
 	    }, {
 	        key: "handleTimeSpan",
 	        value: function handleTimeSpan(zoom) {
-	            console.log(zoom);
-
 	            var from = getWindowFrom(this.state.to, zoom);
-
 	            this.setState({ from: from, zoom: zoom });
-
 	            this.props.onChange(_underscore2.default.extend({}, this.state, { from: from }));
 	        }
 	    }, {
@@ -47297,8 +47280,7 @@
 	    CurrentCoordinate = _reactStockcharts.coordinates.CurrentCoordinate,
 	    MouseCoordinateX = _reactStockcharts.coordinates.MouseCoordinateX,
 	    MouseCoordinateY = _reactStockcharts.coordinates.MouseCoordinateY;
-	var HoverTooltip = _reactStockcharts.tooltip.HoverTooltip,
-	    MovingAverageTooltip = _reactStockcharts.tooltip.MovingAverageTooltip;
+	var HoverTooltip = _reactStockcharts.tooltip.HoverTooltip;
 	var XAxis = _reactStockcharts.axes.XAxis,
 	    YAxis = _reactStockcharts.axes.YAxis;
 	var fitWidth = _reactStockcharts.helper.fitWidth,
@@ -47457,8 +47439,6 @@
 	};
 
 	exports.default = StocksChartComponent;
-
-	//var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
 /***/ },
 /* 352 */
